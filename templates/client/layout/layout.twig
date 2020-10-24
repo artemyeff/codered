@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Интернет магазин</title>
+  <meta name="description" content="интернет магазин">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/pagination.css">
+</head>
+<body>
+<div class="wrapper">
+  <div class="header">
+    <a href="{{ path('main_page') }}" class="logo"><img src="https://codered.su/design/codered_v2_lang_adapt_3/img/logo.gif" alt=""></a>
+    <div class="side-bar">
+      <a href="{{ path('app_client_catalog_main') }}" class="button-header">Каталог</a>
+      <a href="{{ path('delivery') }}" class="button-header">Доставка</a>
+      <a href="{{ path('payment') }}" class="button-header">Оплата</a>
+      <a href="{{ path('dealers') }}" class="button-header">Дилеры</a>
+      <a href="{{ path('contacts') }}" class="button-header">Контакты</a>
+    </div>
+    <div class="search">
+      <input type="text" placeholder="Поиск товара" class="search1">
+      <div class="search2"></div>
+    </div>
+    <a href="{{ path('app_client_cart_index') }}" class="cart">
+      <div class="cart1"></div>
+      <div class="cart2" id="cart-counter">({{ cart.count ?? 0 }})</div>
+    </a>
+  </div>
+  <div class="main">
+    <div class="content">
+      {% block content %}{% endblock %}
+    </div>
+    <div class="katalog">
+      <div class="menu">
+        <div class="name-menu">Категории</div>
+        {% for category in categories %}
+          <a href="{{ path('app_client_catalog_category', {'id': category.id}) }}" class="button-menu">{{ category.name }}</a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer-logo"><img src="https://codered.su/design/codered_v2_lang_adapt_3/img/logo.gif" alt=""></div>
+    <div class="footer-info">Культовая отечественная марка одежды, поддерживающая граффити-сообщество и активную
+      творческую молодежь. Все наши вещи произведены ограниченным тиражом исключительно в России.
+    </div>
+    <div class="footer-email">artemjev.denis2012@yandex.ru</div>
+  </div>
+</div>
+{% block scripts %}{% endblock %}
+</body>
+</html>

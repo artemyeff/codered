@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  nginx:
+    build: docker/nginx
+    ports:
+      - 80:80
+    links:
+      - php
+    volumes:
+      - ./:/var/www/codered
+  php:
+    build: docker/php
+    container_name: codered-php_1
+    volumes:
+      - ./:/var/www/codered
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: codered
+      POSTGRES_USER: codered
+      POSTGRES_DB: codered
+    ports:
+      - 5432:5432
+    restart: always
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+volumes:
+  postgresdata:

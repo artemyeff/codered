@@ -1,0 +1,17 @@
+{% extends 'client/layout/layout.twig' %}
+{% block content %}
+  <div class="cont-name">Каталог</div>
+  {{ knp_pagination_render(pagination) }}
+  <div class="cont-lot">
+    {% for product in pagination %}
+      <div class="lot">
+        <img src="{{ product.image }}">
+        <div class="lot-info">
+          <a href="{{ path('app_client_catalog_product', {'id': product.id}) }}" class="lotsite">{{ product.name }}</a>
+          <div class="lot-name">{{ product.category.name }}</div>
+          <div class="lot-price">{{ product.price }} ₽</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

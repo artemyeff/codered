@@ -1,0 +1,8 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+admin_api_login_check:
+  path: /api/admin/login
+  methods: [POST]
+

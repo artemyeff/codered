@@ -1,0 +1,27 @@
+{% for id, item in cart.items %}
+  <div class="cart-info">
+    <div class="cart-img"><img
+          src="{{ item.image }}" alt="">
+    </div>
+    <div class="cart-info2">
+      <div class="cart-name" >{{ item.name }}</div>
+      <div class="cart-site">CODERED</div>
+    </div>
+    <div class="cart-cena">{{ item.price }} P</div>
+    <div class="cart-kol">
+      <div class="cart-kol1 cart-minus" data-product-id="{{ id }}"><img
+            src="https://api.icons8.com/download/6f2ef6fc41b0764d23e7be4824e0df8530f4614e/windows8/PNG/512/Very_Basic/minus-512.png">
+      </div>
+      <div class="cart-kol2">{{ item.count }}</div>
+      <div class="cart-kol3 cart-plus" data-product-id="{{ id }}"><img
+            src="https://img2.freepng.ru/20180330/jtq/kisspng-computer-icons-plus-and-minus-signs-clip-art-plus-5abe3dd0d61d66.182850951522417104877.jpg">
+      </div>
+    </div>
+    <div class="cart-sum">{{ item.sum }} P</div>
+    <div class="cart-del cart-remove" data-product-id="{{ id }}"><img src="https://pngicon.ru/file/uploads/remove.png"></div>
+  </div>
+{% endfor %}
+<div class="cart-itog">
+  <div class="cart-itog1">Итого</div>
+  <div class="cart-itog2">{{ cart.sum }} P</div>
+</div>
